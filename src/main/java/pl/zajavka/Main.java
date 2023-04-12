@@ -11,12 +11,8 @@ public class Main {
                 new AnnotationConfigApplicationContext(DataSourceConfiguration.class);
 
 
-        JdbcTempleExample example = context.getBean(JdbcTempleExample.class);
-//        example.insert();
-//        example.update();
-        example.delete();
-        example.select();
-
+        SimpleJdbcInsertExample example = context.getBean(SimpleJdbcInsertExample.class);
+        example.simpleDriverDataSource();
     }
 
 }
