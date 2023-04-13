@@ -10,13 +10,8 @@ public class Main {
         ApplicationContext context =
                 new AnnotationConfigApplicationContext(DataSourceConfiguration.class);
 
-
-//        SimpleJdbcInsertExample example = context.getBean(SimpleJdbcInsertExample.class);
-//        example.simpleDriverDataSource();
-
-        SimpleJdbcCallExample simpleJdbcCallExample = context.getBean(SimpleJdbcCallExample.class);
-        simpleJdbcCallExample.callingCalcSumFunction();
-
+        TransactionTemplateExample jdbcTemplateExample = context.getBean(TransactionTemplateExample.class);
+        jdbcTemplateExample.example1();
     }
 
 }

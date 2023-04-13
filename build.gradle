@@ -24,6 +24,7 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-params:$junitVersion"
 
     // logback
+    implementation "ch.qos.logback:logback-classic:$logbackVersion"
     testImplementation "ch.qos.logback:logback-classic:$logbackVersion"
 
     // mockito
@@ -46,6 +47,7 @@ dependencies {
     implementation "org.springframework:spring-context-support:$springVersion"
     implementation "org.springframework:spring-expression:$springVersion"
     implementation "org.springframework:spring-jdbc:$springVersion"
+    implementation "org.springframework:spring-tx:$springVersion"
 
     // postgresql
     implementation "org.postgresql:postgresql:$postgresqlDrivenVersion"
