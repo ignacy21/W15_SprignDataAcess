@@ -7,10 +7,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.support.TransactionTemplate;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @ComponentScan(basePackages = "pl.zajavka")
+@EnableTransactionManagement
 public class DataSourceConfiguration {
 
     @Bean
@@ -28,8 +29,4 @@ public class DataSourceConfiguration {
         return new DataSourceTransactionManager(databaseDataSource());
     }
 
-    @Bean
-    public TransactionTemplate transactionTemplate(PlatformTransactionManager transactionManager) {
-        return new TransactionTemplate(transactionManager);
-    }
 }

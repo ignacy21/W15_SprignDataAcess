@@ -11,7 +11,7 @@ public class Main {
                 new AnnotationConfigApplicationContext(DataSourceConfiguration.class);
 
         TransactionTemplateExample jdbcTemplateExample = context.getBean(TransactionTemplateExample.class);
-        jdbcTemplateExample.example1();
+        jdbcTemplateExample.someMethod();
     }
 
 }

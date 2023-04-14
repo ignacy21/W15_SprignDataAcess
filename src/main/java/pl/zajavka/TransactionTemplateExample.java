@@ -6,9 +6,7 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.TransactionCallbackWithoutResult;
-import org.springframework.transaction.support.TransactionTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
@@ -19,37 +17,9 @@ public class TransactionTemplateExample {
 
     private SimpleDriverDataSource simpleDriverDataSource;
 
-    private TransactionTemplate transactionTemplate;
-
-    // tak w praktyce raczej nie piszemy :(
-    public void example1() {
-        Integer result = transactionTemplate.execute(status -> {
-            Integer integer = someMethod();
-            if (true) {
-                status.setRollbackOnly();
-                log.error("Transaction rollback");
-            }
-            return integer;
-        });
-        System.out.println("Rows: " + result);
-
-    }
-
-    // tak w praktyce raczej nie piszemy :(
-    public void transactionCallbackWithoutResultUse() {
-        transactionTemplate.execute(new TransactionCallbackWithoutResult() {
-            @Override
-            protected void doInTransactionWithoutResult(TransactionStatus status) {
-                someVoidMethod();
-                if (true) {
-                    status.setRollbackOnly();
-                    log.error("Transaction rollback");
-                }
-            }
-        });
-    }
-
-    private Integer someMethod() {
+    // Person: name is unique
+    @Transactional
+    public Integer someMethod() {
         int result = 0;
         NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
 
@@ -62,7 +32,7 @@ public class TransactionTemplateExample {
         result += jdbcTemplate.update(SQL, new BeanPropertySqlParameterSource(person3));
         return result;
     }
-    private void someVoidMethod() {
+    public void someVoidMethod() {
         int result = 0;
         NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
 
