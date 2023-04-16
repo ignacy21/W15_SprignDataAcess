@@ -18,7 +18,7 @@ public class DataSourceConfiguration {
     public SimpleDriverDataSource databaseDataSource() {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         dataSource.setDriver(new Driver());
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/zajavka");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/projekt-w-15");
         dataSource.setUsername("postgres");
         dataSource.setPassword("postgresql");
         return dataSource;

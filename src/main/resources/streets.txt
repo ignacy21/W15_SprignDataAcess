@@ -1,0 +1,201 @@
+1 Maja
+3 Maja
+11 Listopada
+Akademicka
+gen. Władysława Andersa
+Armii Krajowej
+Balonowa
+Michała Bałuckiego
+Bankowa
+Józefa Bema
+Bernardyńska
+Beskidzka
+Białoskórnicza
+Bielska
+Bohaterów Monte Cassino
+Bożego Ciała
+Bracka
+Browarna
+Brzeska
+Bytomska
+Chłodna
+Chmielna
+Fryderyka Chopina
+Chorzowska
+Bolesława Chrobrego
+Ciasna
+Ciepła
+Stefana Czarnieckiego
+Częstochowska
+Jana Henryka Dąbrowskiego
+Długa
+Dworcowa
+Dyrekcyjna
+Elbląska
+Fabryczna
+Farna
+Floriańska
+Franciszkańska
+Francuska
+Aleksandra Fredry
+Gajowa
+Garbarska
+Garncarska
+Gdańska
+Gliniana
+Gliwicka
+Bartosza Głowackiego
+Gnieźnieńska
+Gołębia
+Górnośląska
+Graniczna
+Grodzka
+Artura Grottgera
+Grunwaldzka
+Gwarna
+Hallera
+Hetmańska
+Hrubieszowska
+Świętego Idziego
+Inżynierska
+Jagiellońska
+Jana Pawła II
+Jana z Kolna
+Wincentego Janasa
+Jezuicka
+Kamienna
+Kanonia
+Karmelicka
+Jana Kasprowicza
+Katedralna
+Katowicka
+Kijowska
+Jana Kilińskiego
+Klasztorna
+Kolejowa
+Komuny Paryskiej
+Stanisława Konarskiego
+Mikołaja Kopernika
+Janusza Korczaka
+Tadeusza Kościuszki
+Krakowska
+Krakowskie Przedmieście
+Zygmunta Krasińskiego
+Królewska
+Królowej Jadwigi
+Krucza
+Krupnicza
+Lechicka
+Legionów
+Legionów
+Bolesława Limanowskiego
+Lipowa
+Lubelska
+Lwowska
+Łąkowa
+Łódzka
+Jacka Malczewskiego
+Stanisława Małachowskiego
+Mariacka
+Adama Mickiewicza
+Mikołowska
+Miodowa
+Młyńska
+Stanisława Moniuszki
+Mostowa
+Gabriela Narutowicza
+Niepodległości
+Niestachowska
+Nowa
+Obornicka
+Obozowa
+Ogrodowa
+Okopowa
+Karola Olszewskiego
+Opolska
+Oświęcimska
+Ignacego Paderewskiego
+Partyzantów
+Piekarska
+Piękna
+Pijarska
+Józefa Piłsudskiego
+Piwna
+Pocztowa
+Pomorska
+Józefa Poniatowskiego
+ks. Jerzego Popiełuszki
+Poznańska
+Północna
+Prosta
+Prudnicka
+Bolesława Prusa
+Kazimierza Pułaskiego
+Puławska
+R
+Racławicka
+Rajska
+Mikołaja Reja
+Władysława Reymonta
+Rwańska
+Rycerska
+Rzeczypospolitej
+Sandomierska
+Senatorska
+Siemianowicka
+Henryka Sienkiewicza
+Sienna
+Władysława Sikorskiego
+Piotra Skargi
+Juliusza Słowackiego
+Jana III Sobieskiego
+Solidarności
+Stalowa
+Starowiejska
+Stefana Starzyńskiego
+Stanisława Staszica
+Stawowa
+Andrzeja Struga
+Strzelecka
+Wita Stwosza
+Szczecińska
+Szeroka
+Szewska
+Szpitalna
+Śląska
+św. Barbary
+św. Ducha
+św. Jana
+św. Jerzego
+Karola Świerczewskiego
+Świętej Trójcy
+Świętojańska
+Świętokrzyska
+Tamka
+Targowa
+Teatralna
+Toruńska
+Towarowa
+Juliana Tuwima
+Uniwersytecka
+Wałowa
+Warszawska
+Wawelska
+Wesoła
+Widok
+Wiejska
+Wincentego Witosa
+Wojska Polskiego
+Wolności
+Wolności
+Wrocławska
+Stefana Wyszyńskiego
+Zachodnia
+Zamkowa
+Złota
+Zwierzyniecka
+Zwycięstwa
+Żeglarska
+Żelazna
+Stefana Żeromskiego
+Żytnia
