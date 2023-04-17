@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.zajavka.data.Opinion;
 
 import java.time.LocalDateTime;
@@ -18,6 +19,7 @@ public class RandomOpinionService {
 
     private final SimpleDriverDataSource simpleDriverDataSource;
 
+    @Transactional
     public List<Opinion> createRandomOpinions(int numberOfOpinions, int numberOfCustomers, int numberOfProducts) {
         String COMMENT = "INSERT INTO opinion (id, customer_id, product_id, stars, comment, date_time) " +
                 "VALUES" +

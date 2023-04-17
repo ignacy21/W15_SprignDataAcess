@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.zajavka.data.Product;
 
 import java.io.IOException;
@@ -34,6 +35,7 @@ public class RandomProductService {
         throw new RuntimeException("POSSIBLENT!!!???");
     }
 
+    @Transactional
     public List<Product> createRandomProducts() {
         String COMMENT = "INSERT INTO product (id, product_name, product_code, product_price, adults_only, description, producer_id) " +
                 "VALUES" +

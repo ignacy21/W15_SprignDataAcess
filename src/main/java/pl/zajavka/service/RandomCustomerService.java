@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.zajavka.data.Customer;
 
 import java.io.IOException;
@@ -53,6 +54,7 @@ public class RandomCustomerService {
         }
     }
 
+    @Transactional
     public List<Customer> createRandomCustomers(int numberOfCustomers) {
         String COMMENT = "INSERT INTO customer (id, user_name, email, name, surname, date_of_birth, telephone_number) " +
                 "VALUES" +
@@ -78,7 +80,6 @@ public class RandomCustomerService {
             NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(simpleDriverDataSource);
             BeanPropertySqlParameterSource parameterSource = new BeanPropertySqlParameterSource(customer);
             template.update(COMMENT, parameterSource);
-
         }
         return customers;
     }

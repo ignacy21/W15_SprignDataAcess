@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.zajavka.data.Producer;
 
 import java.io.IOException;
@@ -31,6 +32,7 @@ public class RandomProducerService {
         throw new RuntimeException("POSSIBLENT!!!???");
     }
 
+    @Transactional
     public List<Producer> createRandomProducers(int numberOfProducersCreate) {
         List<Producer> producers= new LinkedList<>();
         String COMMENT = "INSERT INTO producer (id, producer_name, address) " +

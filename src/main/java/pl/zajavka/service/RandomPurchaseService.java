@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.zajavka.data.Purchase;
 
 import java.time.LocalDateTime;
@@ -18,6 +19,7 @@ public class RandomPurchaseService {
 
     private final SimpleDriverDataSource simpleDriverDataSource;
 
+    @Transactional
     public List<Purchase> createRandomPurchases(int numberOfPurchases, int numberOfCustomers, int numberOfProducts) {
         String COMMENT = "INSERT INTO purchase (id, customer_id, product_id, quantity, date_time) " +
                 "VALUES" +
