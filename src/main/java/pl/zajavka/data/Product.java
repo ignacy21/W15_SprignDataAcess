@@ -1,22 +1,21 @@
 package pl.zajavka.data;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
 @Data
 @Builder
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class Product {
 
-    private final int id;
-    private final String productName;
-    private final String productCode;
-    private final BigDecimal productPrice;
-    private final boolean adultsOnly;
-    private final String description;
-    private final int producerID;
+    private int id;
+    private String productName;
+    private String productCode;
+    private BigDecimal productPrice;
+    private boolean adultsOnly;
+    private String description;
+    private int producerID;
 }

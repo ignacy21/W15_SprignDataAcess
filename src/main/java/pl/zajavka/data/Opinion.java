@@ -1,19 +1,24 @@
 package pl.zajavka.data;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
 @Builder
-@RequiredArgsConstructor
-public class Opinion {
+@AllArgsConstructor
+public class Opinion implements Comparable<Opinion> {
     private final int id;
-    private final int customerId;
-    private final int productId;
-    private final int stars;
-    private final String comment;
-    private final LocalDateTime dateTime;
+    private int customerId;
+    private int productId;
+    private int stars;
+    private String comment;
+    private LocalDateTime dateTime;
+
+    @Override
+    public int compareTo(Opinion o) {
+        return o.getCustomerId() - customerId;
+    }
 }

@@ -4,17 +4,21 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
 @Builder
 @AllArgsConstructor
-public class Purchase {
+public class Purchase implements Comparable<Purchase> {
 
-    private final int id;
-    private final int customerId;
-    private final int productId;
-    private final int quantity;
-    private final LocalDateTime dateTime;
+    private int id;
+    private int customerId;
+    private int productId;
+    private int quantity;
+    private LocalDateTime dateTime;
+
+    @Override
+    public int compareTo(Purchase p) {
+        return p.getCustomerId() - customerId;
+    }
 }

@@ -2,10 +2,6 @@ package pl.zajavka;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import pl.zajavka.data.*;
-import pl.zajavka.service.*;
-
-import java.util.List;
 
 public class Main {
 
@@ -13,30 +9,31 @@ public class Main {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(DataSourceConfiguration.class);
 
-        RandomCustomerService randomCustomerService = context.getBean(RandomCustomerService.class);
-        List<Customer> randomCustomers = randomCustomerService.createRandomCustomers(150);
-        print(randomCustomers);
 
-        RandomProducerService randomProducerService = context.getBean(RandomProducerService.class);
-        List<Producer> randomProducers = randomProducerService.createRandomProducers(20);
-        print(randomProducers);
+        DataBaseService dataBaseService = context.getBean(DataBaseService.class);
+        dataBaseService.removeAll();
+        dataBaseService.createData(context, 150, 20, 500, 50);
 
-        RandomProductService randomProductService = context.getBean(RandomProductService.class);
-        List<Product> randomProducts = randomProductService.createRandomProducts();
-        print(randomProducts);
+//        Exercise_5 exercise_5 = new Exercise_5();
+//        Map<String, Boolean> stringBooleanMap = exercise_5.doesCustomerGiveOpinionAboutProductThatHeReallyBought(
+//                dataBaseService.getRandomOpinions(), dataBaseService.getRandomPurchases());
+//        for (Map.Entry<String, Boolean> stringBooleanEntry : stringBooleanMap.entrySet()) {
+//            System.out.println(stringBooleanEntry);
+//        }
+//
+//        Exercise_6 exercise6 = context.getBean(Exercise_6.class);
+//        exercise6.putInsertsFromFile();
 
-        RandomPurchaseService randomPurchaseService = context.getBean(RandomPurchaseService.class);
-        List<Purchase> randomPurchases = randomPurchaseService.createRandomPurchases(500, 150, 64);
-        print(randomPurchases);
+//        Exercise_7 exercise7 = context.getBean(Exercise_7.class);
+//        exercise7.removeOpinionsRatedUnder4(dataBaseService.getRandomOpinions());
 
-        RandomOpinionService randomOpinionService = context.getBean(RandomOpinionService.class);
-        List<Opinion> randomOpinions = randomOpinionService.createRandomOpinions(50, 150, 64);
-        print(randomOpinions);
+//        Exercise_8 exercise8 = context.getBean(Exercise_8.class);
+//        exercise8.removeCustomerWhoGiveLEssThan4Stars(dataBaseService.getRandomOpinions());
 
-    }
-    private static void print(List list) {
-        for (Object o : list) {
-            System.out.println(o);
-        }
+        Exercise_9 exercise9 = context.getBean(Exercise_9.class);
+        exercise9.clientPurchase(1, 1, 1);
+
+//        Exercise_10 exercise10 = context.getBean(Exercise_10.class);
+//        exercise10.wipeDownExistenceOfProduct(1);
     }
 }

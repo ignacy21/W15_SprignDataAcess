@@ -1,16 +1,16 @@
 package pl.zajavka.data;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 @Data
 @Builder
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class Producer {
 
-    private final int id;
-    private final String producerName;
-    private final String address;
+    private int id;
+    private String producerName;
+    private String address;
 
 }

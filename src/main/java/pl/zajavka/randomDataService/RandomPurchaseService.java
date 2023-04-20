@@ -1,12 +1,12 @@
-package pl.zajavka.service;
+package pl.zajavka.randomDataService;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.zajavka.data.Opinion;
+import pl.zajavka.data.Purchase;
 
 import java.time.LocalDateTime;
 import java.util.LinkedList;
@@ -14,61 +14,43 @@ import java.util.List;
 import java.util.Random;
 
 @Service
-@RequiredArgsConstructor
-public class RandomOpinionService {
+@AllArgsConstructor
+public class RandomPurchaseService {
 
     private final SimpleDriverDataSource simpleDriverDataSource;
 
     @Transactional
-    public List<Opinion> createRandomOpinions(int numberOfOpinions, int numberOfCustomers, int numberOfProducts) {
-        String COMMENT = "INSERT INTO opinion (id, customer_id, product_id, stars, comment, date_time) " +
+    public List<Purchase> createRandomPurchases(int numberOfPurchases, int numberOfCustomers, int numberOfProducts) {
+        String COMMAND = "INSERT INTO purchase (customer_id, product_id, quantity, date_time) " +
                 "VALUES" +
-                "(:id, :customerId, :productId, :stars, :comment, :dateTime)";
-        List<Opinion> opinionList = new LinkedList<>();
-        for (int i = 1; i <= numberOfOpinions; i++) {
-            Opinion opinion = Opinion.builder()
-                    .id(i)
+                "(:customerId, :productId, :quantity, :dateTime)";
+        List<Purchase> purchaseList = new LinkedList<>();
+        for (int i = 1; i <= numberOfPurchases; i++) {
+            Purchase purchase = Purchase.builder()
                     .customerId(randomCustomerId(numberOfCustomers))
                     .productId(randomProductId(numberOfProducts))
-                    .stars(randomStars())
-                    .comment(generateRandomComment())
+                    .quantity(randomQuantity())
                     .dateTime(randomDateTime())
                     .build();
-            opinionList.add(opinion);
+            purchaseList.add(purchase);
             NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(simpleDriverDataSource);
-            BeanPropertySqlParameterSource parameterSource = new BeanPropertySqlParameterSource(opinion);
-            template.update(COMMENT, parameterSource);
+            BeanPropertySqlParameterSource parameterSource = new BeanPropertySqlParameterSource(purchase);
+            template.update(COMMAND, parameterSource);
         }
-        return opinionList;
+        return purchaseList;
     }
-
     private int randomCustomerId(int numberOfCustomers) {
         Random random = new Random();
         return random.nextInt(1, numberOfCustomers + 1);
     }
 
+    private int randomQuantity() {
+        Random random = new Random();
+        return random.nextInt(1, 10);
+    }
     private int randomProductId(int numberOfProducts) {
         Random random = new Random();
         return random.nextInt(1, numberOfProducts + 1);
-    }
-
-    private int randomStars() {
-        Random random = new Random();
-        return random.nextInt(1, 6);
-    }
-
-    private String generateRandomComment() {
-        StringBuilder sb = new StringBuilder();
-        Random random = new Random();
-        for (int i = 0; i < random.nextInt(40, 70); i++) {
-            int i1 = random.nextInt(97, 122);
-            char letter = (char) i1;
-            sb.append(letter);
-            if (i1 > 115) {
-                sb.append(" ");
-            }
-        }
-        return sb.toString();
     }
 
     private LocalDateTime randomDateTime() {

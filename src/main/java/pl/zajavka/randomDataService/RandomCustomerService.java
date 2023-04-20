@@ -1,4 +1,4 @@
-package pl.zajavka.service;
+package pl.zajavka.randomDataService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -28,7 +28,7 @@ public class RandomCustomerService {
 
     static {
         try {
-            List<String> strings = Files.readAllLines(Path.of("src/main/resources/names.txt"));
+            List<String> strings = Files.readAllLines(Path.of("src/main/resources/exercise_3_files/names.txt"));
             for (String line : strings) {
                 String[] s = line.split(" ");
                 NAMES_LIST.addAll(Arrays.stream(s)
@@ -42,7 +42,7 @@ public class RandomCustomerService {
 
     static {
         try {
-            List<String> strings = Files.readAllLines(Path.of("src/main/resources/surnames.txt"));
+            List<String> strings = Files.readAllLines(Path.of("src/main/resources/exercise_3_files/surnames.txt"));
             for (String line : strings) {
                 String[] s = line.split(" ");
                 SURNAMES_LIST.addAll(Arrays.stream(s)
@@ -56,7 +56,7 @@ public class RandomCustomerService {
 
     @Transactional
     public List<Customer> createRandomCustomers(int numberOfCustomers) {
-        String COMMENT = "INSERT INTO customer (id, user_name, email, name, surname, date_of_birth, telephone_number) " +
+        String COMMAND = "INSERT INTO customer (id, user_name, email, name, surname, date_of_birth, telephone_number) " +
                 "VALUES" +
                 "(:id, :userName, :email, :name, :surname, :dateOfBirth, :telephoneNumber)";
         List<Customer> customers = new ArrayList<>();
@@ -79,7 +79,7 @@ public class RandomCustomerService {
             customers.add(customer);
             NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(simpleDriverDataSource);
             BeanPropertySqlParameterSource parameterSource = new BeanPropertySqlParameterSource(customer);
-            template.update(COMMENT, parameterSource);
+            template.update(COMMAND, parameterSource);
         }
         return customers;
     }

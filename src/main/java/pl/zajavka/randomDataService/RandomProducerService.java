@@ -1,4 +1,4 @@
-package pl.zajavka.service;
+package pl.zajavka.randomDataService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -11,7 +11,9 @@ import pl.zajavka.data.Producer;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -33,13 +35,13 @@ public class RandomProducerService {
     }
 
     @Transactional
-    public List<Producer> createRandomProducers(int numberOfProducersCreate) {
+    public List<Producer> createRandomProducers(int numberOfProducers) {
         List<Producer> producers= new LinkedList<>();
-        String COMMENT = "INSERT INTO producer (id, producer_name, address) " +
+        String COMMAND = "INSERT INTO producer (id, producer_name, address) " +
                 "VALUES" +
                 "(:id, :producerName, :address)";
 
-        for (int i = 1; i <= numberOfProducersCreate; i++) {
+        for (int i = 1; i <= numberOfProducers; i++) {
             Producer producer = Producer.builder()
                     .id(i)
                     .producerName(randomProducerName(i))
@@ -48,14 +50,14 @@ public class RandomProducerService {
             producers.add(producer);
             NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(simpleDriverDataSource);
             BeanPropertySqlParameterSource parameterSource = new BeanPropertySqlParameterSource(producer);
-            template.update(COMMENT, parameterSource);
+            template.update(COMMAND, parameterSource);
         }
         return producers;
     }
 
     private String randomAddress() {
-        List<String> CITIES = fileToStringList("src/main/resources/cities.txt");
-        List<String> STREETS = fileToStringList("src/main/resources/streets.txt");
+        List<String> CITIES = fileToStringList("src/main/resources/exercise_3_files/cities.txt");
+        List<String> STREETS = fileToStringList("src/main/resources/exercise_3_files/streets.txt");
         Random random = new Random();
         String city = CITIES.get(random.nextInt(0, CITIES.size()));
         String street = STREETS.get(random.nextInt(0, STREETS.size()));
@@ -64,8 +66,8 @@ public class RandomProducerService {
 
     private String randomProducerName(int id) {
         Random random = new Random();
-        List<String> SURNAMES = fileToStringList("src/main/resources/surnames.txt");
-        List<String> PRODUCER_PROFESSION = fileToStringList("src/main/resources/producerProfession.txt");
+        List<String> SURNAMES = fileToStringList("src/main/resources/exercise_3_files/surnames.txt");
+        List<String> PRODUCER_PROFESSION = fileToStringList("src/main/resources/exercise_3_files/producerProfession.txt");
         String surname = SURNAMES.get(random.nextInt(0, SURNAMES.size()));
         String profession = PRODUCER_PROFESSION.get(random.nextInt(0, PRODUCER_PROFESSION.size()));
         return surname + profession + id;

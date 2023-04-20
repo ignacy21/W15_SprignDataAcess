@@ -1,4 +1,4 @@
-package pl.zajavka.service;
+package pl.zajavka.randomDataService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -37,10 +37,10 @@ public class RandomProductService {
 
     @Transactional
     public List<Product> createRandomProducts() {
-        String COMMENT = "INSERT INTO product (id, product_name, product_code, product_price, adults_only, description, producer_id) " +
+        String COMMAND = "INSERT INTO product (id, product_name, product_code, product_price, adults_only, description, producer_id) " +
                 "VALUES" +
                 "(:id, :productName, :productCode, :productPrice, :adultsOnly, :description, :producerID)";
-        List<String> lines = fileToStringList("src/main/resources/productsNames.txt");
+        List<String> lines = fileToStringList("src/main/resources/exercise_3_files/productsNames.txt");
         List<Product> productList = new LinkedList<>();
         for (int i = 0; i < lines.size(); i++) {
             Product product = Product.builder()
@@ -56,7 +56,7 @@ public class RandomProductService {
 
             NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(simpleDriverDataSource);
             BeanPropertySqlParameterSource parameterSource = new BeanPropertySqlParameterSource(product);
-            template.update(COMMENT, parameterSource);
+            template.update(COMMAND, parameterSource);
         }
         return productList;
     }

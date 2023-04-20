@@ -1,22 +1,24 @@
 package pl.zajavka.data;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
 @Builder
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class Customer {
 
-    private final int id;
-    private final String userName;
-    private final String email;
-    private final String name;
-    private final String surname;
-    private final LocalDate dateOfBirth;
-    private final String telephoneNumber;
+    private int id;
+    private String userName;
+    private String email;
+    private String name;
+    private String surname;
+    private LocalDate dateOfBirth;
+    private String telephoneNumber;
 
 }
